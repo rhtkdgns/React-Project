@@ -1,23 +1,36 @@
-import logo from './logo.svg';
+/* eslint-disable */
+import MNavbar from './common/MNavbar';
+import Movies from './component/Movies';
+import {useState} from 'react';
+import MovieForm from './component/MovieForm';
 import './App.css';
 
 function App() {
+
+  const [movies, setMovies] = useState([
+    {title: 'kosanghun', year:1992},
+    {title: 'hansangmin', year:1990},
+    {title: 'yujinho', year:1894},
+  ]);
+  const renderMovies = movies.map((movie,i) => {
+    return(
+      <Movies movie={movie} key={i}/>
+      );
+  });
+
+  const addMovie = (movie) => {
+    setMovies([
+      ...movies,
+       movie
+    ]);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MNavbar/>
+      <h1>Movies List</h1>
+      <MovieForm addMovie={addMovie}/>
+      {renderMovies}
     </div>
   );
 }
