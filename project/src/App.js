@@ -7,16 +7,23 @@ import './App.css';
 
 function App() {
 
-  const [movies, setMovies] = useState([
-    {title: 'kosanghun', year:1992},
-    {title: 'hansangmin', year:1990},
-    {title: 'yujinho', year:1894},
-  ]);
-  const renderMovies = movies.map((movie,i) => {
+  const [movies, setMovies] = useState([]);
+
+  const removeMovie = (id) => {
+    console.log(id);
+    setMovies(movies.filter(movie => {
+      return movie.id !== id;
+    }))
+  }
+  
+  const renderMovies = movies.length ? movies.map((movie) => {  
     return(
-      <Movies movie={movie} key={i}/>
+      <Movies 
+        movie={movie}
+        key={movie.id}
+        removeMovie={removeMovie}/>
       );
-  });
+  }) : '추가된 영화가 없습니다.';
 
   const addMovie = (movie) => {
     setMovies([
@@ -24,7 +31,7 @@ function App() {
        movie
     ]);
   }
-
+  
   return (
     <div className="App">
       <MNavbar/>
