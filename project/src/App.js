@@ -4,7 +4,7 @@ import Movies from './component/Movies';
 import {useState} from 'react';
 import MovieForm from './component/MovieForm';
 import './App.css';
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 function App() {
 
   const [movies, setMovies] = useState([]);
@@ -33,12 +33,22 @@ function App() {
   }
   
   return (
-    <div className="App">
-      <MNavbar/>
-      <h1>Movies List</h1>
-      <MovieForm addMovie={addMovie}/>
-      {renderMovies}
-    </div>
+    <Router>
+      <div className="App">
+          <MNavbar/>
+          <Route path="/movies">
+            <h1>Movies List</h1>
+            <MovieForm addMovie={addMovie}/>
+            {renderMovies}
+          </Route>
+          <Route path="/user">
+            <h2>USERS</h2>
+          </Route>
+          <Route path="/">
+            <h1>HOME</h1>
+          </Route>
+      </div>
+    </Router>  
   );
 }
 
