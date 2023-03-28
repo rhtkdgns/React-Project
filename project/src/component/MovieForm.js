@@ -1,5 +1,6 @@
 /* eslint-disable */
 import {useState} from 'react';
+import InputField from './InputField';
 const MovieForm = ({addMovie}) => {
     const [moviesTitle, setMovieTitle] = useState("");
     const [moviesYear, setMovieYear] = useState("");
@@ -43,20 +44,20 @@ const MovieForm = ({addMovie}) => {
       }
     return (
         <form onSubmit={submit}>
-            <input
-            type="text"
-            value={moviesTitle}
-            placeholder='영화제목'
-            onChange={e => setMovieTitle(e.target.value)}/>
-            <br/>
-            <div style={{color: 'red'}}>{titleError}</div>
-            <input
-            type='number'
-            value={moviesYear}
-            placeholder='영화년도'
-            onChange={e=> setMovieYear(e.target.value)}
+            <InputField 
+                type="text"
+                value={moviesTitle}
+                placeholder='영화제목'
+                onChange={e => setMovieTitle(e.target.value)}
+                errorMessage={titleError}
             />
-            <div style={{color: 'red'}}>{yearError}</div>
+            <InputField 
+                type="number"
+                value={moviesYear}
+                placeholder='영화년도'
+                onChange={e=> setMovieYear(e.target.value)}
+                errorMessage={yearError}
+            />
             <button type='submit'>추가</button>
             <br/>
         </form>
