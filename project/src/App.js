@@ -31,7 +31,7 @@ function App() {
        movie
     ]);
   }
-
+  
   return (
     <div className="App">
       <MNavbar/>
