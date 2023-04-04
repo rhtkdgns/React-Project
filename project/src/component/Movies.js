@@ -1,4 +1,4 @@
-const Movies = ({movie, removeMovie}) => {
+const   Movies = ({movie, removeMovie}) => {
     return(
     <div className="movie">
         <div className="movie-title">
