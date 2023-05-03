@@ -7,7 +7,6 @@ const Movie = () => {
   const [movies, setMovies] = useState([]);
 
   const removeMovie = (id) => {
-    console.log(id);
     setMovies(movies.filter(movie => {
       return movie.id !== id;
     }))

@@ -1,9 +1,9 @@
 /* eslint-disable */
 import MNavbar from './common/MNavbar';
 import routes from './routes';
-
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
 function App() {
 
   
